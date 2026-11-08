@@ -18,7 +18,7 @@ jobs:
       GOOGLE_SERVICES_JSON_B64: ${{ secrets.GOOGLE_SERVICES_JSON_B64 }}
       KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
       KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      KEY_ALIAS: upload
       KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
       VERSION_CODE: ${{ github.run_number }}
       VERSION_NAME: 1.0.${{ github.run_number }}
@@ -37,7 +37,7 @@ jobs:
 
       - name: Verificar secretos obligatorios
         run: |
-          for v in VITE_FIREBASE_API_KEY VITE_FIREBASE_PROJECT_ID VITE_FIREBASE_APP_ID GOOGLE_SERVICES_JSON_B64 KEYSTORE_B64 KEYSTORE_PASSWORD KEY_ALIAS KEY_PASSWORD; do
+          for v in VITE_FIREBASE_API_KEY VITE_FIREBASE_PROJECT_ID VITE_FIREBASE_APP_ID GOOGLE_SERVICES_JSON_B64 KEYSTORE_B64 KEYSTORE_PASSWORD KEY_PASSWORD; do
             if [ -z "${!v}" ]; then echo "::error::Falta el secreto para $v (ver GUIA.md)"; exit 1; fi
           done
 
