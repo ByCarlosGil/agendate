@@ -196,7 +196,11 @@ details.how ul{margin:10px 0 0;padding-left:18px;display:flex;flex-direction:col
 .login-legal{font-size:12px}.login-legal a{color:var(--accent)}
 #accountBg .sheet{gap:10px}
 body{padding-bottom:var(--ad-h,0px)}
-.fab{margin-bottom:var(--ad-h,0px)}
+/* Botones de abajo siempre por encima del banner y de la barra de navegación */
+.fab{bottom:calc(20px + env(safe-area-inset-bottom,0px) + var(--ad-h,0px))!important}
+.sheet{padding-bottom:calc(20px + env(safe-area-inset-bottom,0px) + var(--ad-h,0px))!important;max-height:calc(92vh - var(--ad-h,0px))!important}
+.sheet-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.x-btn{width:44px;height:44px;border-radius:10px;border:1px solid var(--line);font-size:18px;flex:none}
 </style>
 <section id="login" class="login">
   <div class="login-card">
@@ -217,6 +221,7 @@ body{padding-bottom:var(--ad-h,0px)}
     </div>
     <div class="actions">
       <button class="btn btn-ghost" id="soundBtn" aria-pressed="false">🔕 Sonido apagado</button>
+      <button class="btn btn-primary" id="addTop">＋ Tarea</button>
       <button class="btn btn-ghost" id="accountBtn" aria-label="Mi cuenta">👤</button>
     </div>
   </header>
@@ -285,7 +290,7 @@ body{padding-bottom:var(--ad-h,0px)}
 </div>
 <div class="sheet-bg" id="accountBg" hidden>
   <div class="sheet" role="dialog" aria-label="Mi cuenta">
-    <h2>Mi cuenta</h2>
+    <div class="sheet-head"><h2>Mi cuenta</h2><button class="x-btn" id="accountX" aria-label="Cerrar">✕</button></div>
     <p id="accEmail" class="mono"></p>
     <button class="btn btn-ghost" id="logoutBtn">Cerrar sesión</button>
     <a class="btn btn-ghost" href="https://bycarlosgil.github.io/agendate/privacidad.html" target="_blank" rel="noopener" style="text-align:center;text-decoration:none">Política de privacidad</a>

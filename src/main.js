@@ -10,6 +10,7 @@ import {
 } from "firebase/firestore";
 import { FirebaseAuthentication } from "@capacitor-firebase/authentication";
 import { LocalNotifications } from "@capacitor/local-notifications";
+import { App } from "@capacitor/app";
 import { AdMob, BannerAdSize, BannerAdPosition, BannerAdPluginEvents, AdmobConsentStatus } from "@capacitor-community/admob";
 import { startAgenda } from "./app.js";
 
@@ -40,8 +41,13 @@ async function startAds() {
     await AdMob.initialize();
     const info = await AdMob.requestConsentInfo();
     if (info.isConsentFormAvailable && info.status === AdmobConsentStatus.REQUIRED) await AdMob.showConsentForm();
-    AdMob.addListener(BannerAdPluginEvents.SizeChanged, (s) =>
-      document.documentElement.style.setProperty("--ad-h", (s && s.height ? s.height : 0) + "px"));
+    // Reserva espacio para el banner desde ya (se ajusta al tamaño real cuando carga)
+    document.documentElement.style.setProperty("--ad-h", "64px");
+    AdMob.addListener(BannerAdPluginEvents.FailedToLoad, () =>
+      document.documentElement.style.setProperty("--ad-h", "0px"));
+    AdMob.addListener(BannerAdPluginEvents.SizeChanged, (s) => {
+      if (s && s.height > 0) document.documentElement.style.setProperty("--ad-h", Math.ceil(s.height) + 8 + "px");
+    });
     await AdMob.showBanner({
       adId: BANNER_ID, adSize: BannerAdSize.ADAPTIVE_BANNER,
       position: BannerAdPosition.BOTTOM_CENTER, margin: 0, isTesting: ADS_TESTING,
@@ -149,7 +155,19 @@ async function deleteAccount() {
 
 $("#loginBtn").onclick = googleSignIn;
 $("#accountBtn").onclick = () => { $("#accountBg").hidden = false; };
-$("#accountClose").onclick = () => { $("#accountBg").hidden = true; };
+const closeAccount = () => { $("#accountBg").hidden = true; };
+$("#accountClose").onclick = closeAccount;
+$("#accountX").onclick = closeAccount;
+$("#accountBg").addEventListener("click", (e) => { if (e.target.id === "accountBg") closeAccount(); });
+
+// Botón "atrás" de Android: cierra la ventana abierta; si no hay ninguna, minimiza la app.
+if (native) {
+  App.addListener("backButton", () => {
+    if (!$("#accountBg").hidden) return closeAccount();
+    if (!$("#sheetBg").hidden) return $("#cancelBtn").click();
+    App.minimizeApp();
+  });
+}
 $("#logoutBtn").onclick = logout;
 $("#deleteAccBtn").onclick = deleteAccount;
 

@@ -147,6 +147,7 @@ function openForm(t,pre){
 }
 function closeForm(){$("#sheetBg").hidden=true;state.editing=null}
 $("#addBtn").onclick=()=>openForm(null);
+$("#addTop").onclick=()=>openForm(null);
 $("#cancelBtn").onclick=closeForm;
 $("#sheetBg").addEventListener("click",e=>{if(e.target.id==="sheetBg")closeForm()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#sheetBg").hidden)closeForm()});
