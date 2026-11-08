@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+*.jks
+*.keystore
+google-services.json
+android/app/build/
+android/build/
+android/.gradle/
+android/local.properties

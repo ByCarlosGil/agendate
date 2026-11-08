@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Agendate</string>
+    <string name="title_activity_main">Agendate</string>
+    <string name="package_name">com.carlosgil.agendate</string>
+    <string name="custom_url_scheme">com.carlosgil.agendate</string>
+</resources>

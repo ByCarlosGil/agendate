@@ -1,0 +1,16 @@
+{
+  "appId": "com.carlosgil.agendate",
+  "appName": "Agendate",
+  "webDir": "dist",
+  "plugins": {
+    "FirebaseAuthentication": {
+      "skipNativeAuth": true,
+      "providers": [
+        "google.com"
+      ]
+    },
+    "LocalNotifications": {
+      "iconColor": "#2F47C9"
+    }
+  }
+}
