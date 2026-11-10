@@ -36,7 +36,9 @@ const CATI={trabajo:"💼",personal:"🙂",hogar:"🏠"};
 const REP={daily:"🔁 Diaria",weekly:"🔁 Semanal",monthly:"🔁 Mensual"};
 function esc(s){const d=document.createElement("div");d.textContent=s==null?"":String(s);return d.innerHTML}
 
+const seenTasks=new Set();let enterCount=0,justDone=null;
 function render(){
+  enterCount=0;
   const now=new Date();
   $("#today").textContent=now.toLocaleDateString("es-CO",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
   const counts={red:0,amber:0,green:0,grey:0};
@@ -94,6 +96,9 @@ function render(){
 function taskEl(t,s,now){
   const due=parseDue(t);
   const row=document.createElement("article");row.className="task s-"+s+(t.done?" done":"");
+  // Animación solo para tareas nuevas en pantalla y al marcar como hecha
+  if(!seenTasks.has(t.id)){seenTasks.add(t.id);row.classList.add("enter");row.style.setProperty("--i",Math.min(enterCount++,10))}
+  if(t.id===justDone){row.classList.add("justdone");justDone=null}
   const pillCls={red:"red",amber:"amber",green:"green"}[s]||"";
   row.innerHTML=
     '<button class="check" aria-label="'+(t.done?"Marcar como pendiente":"Marcar como hecha")+'">'+(t.done?"✓":"")+'</button>'+
@@ -120,7 +125,7 @@ async function toggle(t){
     t.date=nextDate(t);t.streak=(t.streak||0)+1;upsertLocal(t);render();
     toast("🔁 ¡Hecha! Reprogramada para "+fmtDay(t.date));await persist(t);return;
   }
-  t.done=!t.done;t.doneAt=t.done?Date.now():null;upsertLocal(t);render();
+  t.done=!t.done;t.doneAt=t.done?Date.now():null;if(t.done)justDone=t.id;upsertLocal(t);render();
   if(t.done)toast("🎉 ¡Bien hecho! «"+t.title+"» completada");
   await persist(t);
 }
