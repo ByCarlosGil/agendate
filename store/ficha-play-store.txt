@@ -1,0 +1,57 @@
+FICHA DE PLAY STORE – AGENDATE
+(Play Console → Crecimiento → Presencia en Play Store → Ficha de Play Store principal)
+
+NOMBRE DE LA APP (máx. 30)
+Agendate: Agenda y Tareas
+
+DESCRIPCIÓN BREVE (máx. 80)
+Tu agenda con semáforo: sabe qué tarea va primero y recibe recordatorios.
+
+DESCRIPCIÓN COMPLETA (máx. 4000)
+Agendate organiza tus pendientes con un sistema de semáforo para que siempre sepas qué hacer primero.
+
+🔴 Rojo – Vencidas: lo que ya pasó la hora límite.
+🟠 Ámbar – Para hoy: vence hoy o en menos de 24 horas.
+🟢 Verde – A tiempo: lo que vence más adelante.
+⚪ Gris – Sin fecha: ideas y pendientes sueltos.
+
+AGENDA EN UNA FRASE
+Escribe o dicta con el micrófono de tu teclado, por ejemplo «mañana a las 3 pm reunión con el equipo, recordarme 1 hora antes», y Agendate entiende la fecha, la hora, el recordatorio, la repetición y la prioridad.
+
+RECORDATORIOS QUE SÍ LLEGAN
+Recibe una notificación a la hora, 15 minutos, 1 hora o 1 día antes, aunque la app esté cerrada.
+
+TAREAS QUE SE REPITEN
+Diarias, semanales o mensuales: al marcarlas como hechas se reprograman solas.
+
+TODO EN ORDEN
+• Categorías: trabajo, personal y hogar.
+• Prioridad alta, media o baja.
+• Vista de la semana con las tareas de cada día.
+• Filtros por color, día y categoría.
+• Historial de tareas completadas.
+• Modo claro y oscuro automático.
+
+TUS DATOS, PRIVADOS
+Inicia sesión con tu cuenta de Google y tus tareas se guardan de forma segura y se sincronizan entre tus dispositivos. Solo tú puedes verlas, y puedes eliminar tu cuenta y tus datos cuando quieras desde la app.
+
+Agendate es gratis y se financia con publicidad.
+
+CATEGORÍA
+Productividad
+
+ETIQUETAS SUGERIDAS
+Agenda, Lista de tareas, Recordatorios, Productividad
+
+DATOS DE CONTACTO
+Correo: carlosgil.960829@gmail.com
+Política de privacidad: https://bycarlosgil.github.io/agendate/privacidad.html
+Eliminación de cuenta: https://bycarlosgil.github.io/agendate/eliminar-cuenta.html
+
+RECURSOS GRÁFICOS (archivos en esta carpeta)
+Ícono de la app (512x512):        icono-512.png
+Gráfico destacado (1024x500):     grafico-destacado-1024x500.png
+Capturas de teléfono (1080x1920): captura-1.png a captura-4.png
+
+ACCESO A LA APP (Contenido de la app → Acceso a la app)
+"Toda la funcionalidad requiere iniciar sesión con una cuenta de Google. Cualquier cuenta de Google sirve; no hay credenciales especiales ni funciones de pago."

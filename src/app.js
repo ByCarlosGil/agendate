@@ -110,7 +110,7 @@ function taskEl(t,s,now){
     (t.remind>=0&&due&&!t.done?'<span class="pill">🔔 '+({0:"a la hora",15:"15 min antes",60:"1 h antes",1440:"1 día antes"}[t.remind]||"")+'</span>':"")+
     (due&&!t.done?'<span class="pill '+pillCls+'">'+relTime(due,now)+'</span>':"")+
     '</span></button>'+
-    '<div class="when mono">'+(t.date?fmtDay(t.date):"—")+(t.time?"<br>"+t.time:"")+'</div>';
+    '<div class="when mono">'+(t.date?fmtDay(t.date):"—")+(t.time?" <br>· "+t.time:"")+'</div>';
   row.querySelector(".check").onclick=()=>toggle(t);
   row.querySelector(".body").onclick=()=>openForm(t);
   return row;
